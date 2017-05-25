@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: oauth2-server
+
+
+server:
+  port: 8988
+  context-path: /authCenter
+security:
+  oauth2:
+    client:
+      authorized-grant-types: authorization_code,password,refresh_token
+      client-id: oauth2Server
+      scope: all
+      client-secret: secret
+    resource:
+      filter-order: 3
+  #user:
+    #password: password
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+      healthcheck:
+                enabled: true
