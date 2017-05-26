@@ -1,0 +1,21 @@
+info:
+  contact:
+    email: penitence.renjie@gmail.com
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      healthcheck:
+        enabled: true
+spring:
+  redis:
+    host: localhost
+  application:
+      name: oauth2-resource
+server:
+  port: 9000
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:8988/authCenter/user
+  sessions: never

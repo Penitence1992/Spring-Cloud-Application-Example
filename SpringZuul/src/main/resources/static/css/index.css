@@ -1,0 +1,12 @@
+/**
+ * Copyright(c) afterloe.
+ * ISC Licensed
+ *
+ * Authors:
+ *       afterloe <afterloeliu@jwis.cn> (http://blog.sina.com.cn/afterloe)
+ *
+ */
+html,body { font-family: "Microsoft YaHei" ! important; cursor: default; min-width: 12.8em; margin:0; height: 100% }
+.loginView { margin-top: 3rem; max-width: 32rem; }
+.copyright { margin-top: 1.5rem; text-align: center; }
+.alert { margin-top: 4rem; }

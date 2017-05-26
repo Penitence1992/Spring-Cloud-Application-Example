@@ -1,0 +1,36 @@
+server:
+  port: 80
+
+
+zuul:
+  routes:
+    resource:
+      path: /resource/**
+      url: http://localhost:9000/
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+      healthcheck:
+        enabled: true
+spring:
+  redis:
+    host: localhost
+  application:
+    name: zuul
+
+security:
+  oauth2:
+    client:
+      client-id: oauth2Resource
+      client-secret: oauth2
+      scope: all
+      authorized-grant-types: authorization_code
+      user-authorization-uri: http://localhost:8988/authCenter/oauth/authorize
+      access-token-uri: http://localhost:8988/authCenter/oauth/token
+      authenticationScheme: query
+    resource:
+      filter-order: 3
+      user-info-uri: http://localhost:8988/authCenter/user
+  filter-order: 3
