@@ -30,7 +30,9 @@ security:
       user-authorization-uri: http://localhost:8988/authCenter/oauth/authorize
       access-token-uri: http://localhost:8988/authCenter/oauth/token
       authenticationScheme: query
+      grant-type: authorization_code
     resource:
-      filter-order: 3
+      filter-order: 0
       user-info-uri: http://localhost:8988/authCenter/user
-  filter-order: 3
+
+logging.level.root: debug

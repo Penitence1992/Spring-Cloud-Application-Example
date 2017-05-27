@@ -1,6 +1,7 @@
 package org.penitence.spring.zuul;
 
 import org.penitence.spring.zuul.config.RedisSessionConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -8,6 +9,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter;
 import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.session.web.context.AbstractHttpSessionApplicationInitializer;
@@ -23,8 +25,14 @@ public class SpringCloudZuulApplication {
 	}
 
 	@Bean
+	protected OAuth2ClientContextFilter filter(){
+		return new OAuth2ClientContextFilter();
+	}
+
+	@Bean
 	protected OAuth2RestTemplate OAuth2RestTemplate(
 			OAuth2ProtectedResourceDetails resource, OAuth2ClientContext context) {
+		System.out.println(resource.getAccessTokenUri());
 		return new OAuth2RestTemplate(resource, context);
 	}
 
